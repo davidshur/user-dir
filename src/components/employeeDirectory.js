@@ -32,6 +32,18 @@ class EmployeeDirectory extends Component {
           age: '24',
           hobby: 'Reading',
         },
+        {
+          id: '3',
+          name: 'Caleb Taylor',
+          age: '24',
+          hobby: 'Football',
+        },
+        {
+          id: '4',
+          name: 'Legolas',
+          age: '204',
+          hobby: 'Archery',
+        },
       ],
       users: [
         {
