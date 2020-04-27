@@ -13,41 +13,41 @@ class EmployeeDirectory extends Component {
       filterType: 'Name',
       filteredUsers: [
         {
-          id: 0,
+          id: '0',
           name: 'David Shur',
-          age: 24,
+          age: '24',
           hobby: 'Dancing',
         },
         {
-          id: 1,
+          id: '1',
           name: 'Tim Shur',
-          age: 22,
+          age: '22',
           hobby: 'Singing',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Amber Shur',
-          age: 24,
+          age: '24',
           hobby: 'Reading',
         },
       ],
       users: [
         {
-          id: 0,
+          id: '0',
           name: 'David Shur',
-          age: 24,
+          age: '24',
           hobby: 'Dancing',
         },
         {
-          id: 1,
+          id: '1',
           name: 'Tim Shur',
-          age: 22,
+          age: '22',
           hobby: 'Singing',
         },
         {
-          id: 2,
+          id: '2',
           name: 'Amber Shur',
-          age: 24,
+          age: '24',
           hobby: 'Reading',
         },
       ],
@@ -60,8 +60,19 @@ class EmployeeDirectory extends Component {
     let newList = [];
 
     if (event.target.value !== '') {
-      currentList = this.state.users;
-      newList = currentList.filter(item => item.name.toLowerCase().includes(event.target.value.toLowerCase()));
+      if (this.state.filterType === 'ID') {
+        currentList = this.state.users;
+        newList = currentList.filter(item => item.id.toLowerCase().includes(event.target.value.toLowerCase()));
+      } else if (this.state.filterType === 'Name') {
+        currentList = this.state.users;
+        newList = currentList.filter(item => item.name.toLowerCase().includes(event.target.value.toLowerCase()));
+      } else if (this.state.filterType === 'Age') {
+        currentList = this.state.users;
+        newList = currentList.filter(item => item.age.toLowerCase().includes(event.target.value.toLowerCase()));
+      } else if (this.state.filterType === 'Hobby') {
+        currentList = this.state.users;
+        newList = currentList.filter(item => item.hobby.toLowerCase().includes(event.target.value.toLowerCase()));
+      }
     } else {
       newList = this.state.users;
     }
