@@ -65,7 +65,6 @@ class EmployeeDirectory extends Component {
     } else {
       newList = this.state.users;
     }
-
     this.setState({filteredUsers: newList});
   }
 
