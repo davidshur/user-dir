@@ -102,9 +102,9 @@ class EmployeeDirectory extends Component {
             <Dropdown.Item onClick={() => this.setState({filterType: 'Hobby'})}>Hobby</Dropdown.Item>
           </DropdownButton>
         </InputGroup>
-        <EmployeeList users={this.state.filteredUsers} />
+        <EmployeeList users={this.state.sortType === "Ascending IDs" ? this.state.filteredUsers.reverse() : this.state.filteredUsers} />
       </Container>
-    )
+    );
   }
 }
 
