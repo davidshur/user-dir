@@ -5,6 +5,7 @@ import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import EmployeeList from './employeeList';
 import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 class EmployeeDirectory extends Component {
   constructor(props) {
@@ -84,6 +85,17 @@ class EmployeeDirectory extends Component {
     return (
       <Container>
         <InputGroup className="mb-4">
+
+          <InputGroup.Prepend>
+            <Button
+              variant="outline-secondary"
+              title={this.state.sortType}
+              id="input-group-sort"
+              onClick={() => this.changeSort}
+            >
+              {this.state.sortType}
+            </Button>
+          </InputGroup.Prepend>
           <FormControl
             placeholder="Search"
             aria-label="Search"
