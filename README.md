@@ -4,7 +4,7 @@ Page where one can filter through users using a search bar!
 
 ## Installation
 
-There is no installation, simply visit the live site on [Github](https://davidshur.github.io/user-dir/)
+There is no installation, simply visit the live site on [Heroku](https://radiant-headland-39127.herokuapp.com/)
 
 ## Usage
 
