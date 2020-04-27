@@ -10,6 +10,7 @@ class EmployeeDirectory extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      sortType: 'Descending IDs',
       filterType: 'Name',
       filteredUsers: [
         {
