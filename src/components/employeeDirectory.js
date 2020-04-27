@@ -10,6 +10,27 @@ class EmployeeDirectory extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      filterType: 'Name',
+      filteredUsers: [
+        {
+          id: 0,
+          name: 'David Shur',
+          age: 24,
+          hobby: 'Dancing',
+        },
+        {
+          id: 1,
+          name: 'Tim Shur',
+          age: 22,
+          hobby: 'Singing',
+        },
+        {
+          id: 2,
+          name: 'Amber Shur',
+          age: 24,
+          hobby: 'Reading',
+        },
+      ],
       users: [
         {
           id: 0,
@@ -31,6 +52,21 @@ class EmployeeDirectory extends Component {
         },
       ],
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(event) {
+    let currentList = [];
+    let newList = [];
+
+    if (event.target.value !== '') {
+      currentList = this.state.users;
+      newList = currentList.filter(item => item.name.toLowerCase().includes(event.target.value.toLowerCase()));
+    } else {
+      newList = this.state.users;
+    }
+
+    this.setState({filteredUsers: newList});
   }
 
   render() {
@@ -38,23 +74,25 @@ class EmployeeDirectory extends Component {
       <Container>
         <InputGroup className="mb-4">
           <FormControl
-            placeholder="Recipient's username"
-            aria-label="Recipient's username"
+            placeholder="Search"
+            aria-label="Search"
             aria-describedby="basic-addon2"
+            onChange={this.handleChange}
           />
 
           <DropdownButton
             as={InputGroup.Append}
             variant="outline-secondary"
-            title="Dropdown"
+            title={this.state.filterType}
             id="input-group-dropdown-2"
           >
-            <Dropdown.Item>Name</Dropdown.Item>
-            <Dropdown.Item>Age</Dropdown.Item>
-            <Dropdown.Item>Hobby</Dropdown.Item>
+            <Dropdown.Item onClick={() => this.setState({filterType: 'ID'})}>ID</Dropdown.Item>
+            <Dropdown.Item onClick={() => this.setState({filterType: 'Name'})}>Name</Dropdown.Item>
+            <Dropdown.Item onClick={() => this.setState({filterType: 'Age'})}>Age</Dropdown.Item>
+            <Dropdown.Item onClick={() => this.setState({filterType: 'Hobby'})}>Hobby</Dropdown.Item>
           </DropdownButton>
         </InputGroup>
-        <EmployeeList users={this.state.users} />
+        <EmployeeList users={this.state.filteredUsers} />
       </Container>
     )
   }
