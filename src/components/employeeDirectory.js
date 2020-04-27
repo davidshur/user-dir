@@ -55,6 +55,7 @@ class EmployeeDirectory extends Component {
       ],
     }
     this.handleChange = this.handleChange.bind(this);
+    this.changeSort = this.changeSort.bind(this);
   }
 
   handleChange(event) {
@@ -81,17 +82,24 @@ class EmployeeDirectory extends Component {
     this.setState({filteredUsers: newList});
   }
 
+  changeSort() {
+    if (this.state.sortType === 'Descending IDs') {
+      this.setState({sortType: 'Ascending IDs', filteredUsers: this.state.filteredUsers.reverse()});
+    } else {
+      this.setState({sortType: 'Descending IDs', filteredUsers: this.state.filteredUsers.reverse()});
+    }
+  }
+
   render() {
     return (
       <Container>
         <InputGroup className="mb-4">
-
           <InputGroup.Prepend>
             <Button
               variant="outline-secondary"
               title={this.state.sortType}
               id="input-group-sort"
-              onClick={() => this.changeSort}
+              onClick={this.changeSort}
             >
               {this.state.sortType}
             </Button>
@@ -115,7 +123,7 @@ class EmployeeDirectory extends Component {
             <Dropdown.Item onClick={() => this.setState({filterType: 'Hobby'})}>Hobby</Dropdown.Item>
           </DropdownButton>
         </InputGroup>
-        <EmployeeList users={this.state.sortType === "Ascending IDs" ? this.state.filteredUsers.reverse() : this.state.filteredUsers} />
+        <EmployeeList users={this.state.filteredUsers} />
       </Container>
     );
   }
